@@ -1,0 +1,21 @@
+name: Run tests on project
+
+on:
+  push:
+    branches: [main]
+    
+jobs:
+  tests:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Setup repo
+        uses: actions/checkout@v2
+        
+      - name: Setup deno
+        uses: denoland/setup-deno@vi
+        with:
+          deno-version: "v.1.22.0"
+          
+      - name: Run tests
+        run: deno test --allow-all
