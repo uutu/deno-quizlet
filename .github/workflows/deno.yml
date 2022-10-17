@@ -1,4 +1,4 @@
-name: Run tests on project
+name: Test and Deploy
 
 on:
   push:
@@ -21,3 +21,14 @@ jobs:
         run: |
           cd drill-and-practice
           deno test --allow-all
+  
+  deploy:
+    runs-on: ubuntu-latest
+    needs: test
+    steps:
+      - uses: actions/checkout@v2
+      - uses: akhileshns/heroku-deploy@v3.12.12
+        with:
+          heroku_api_key: ${{secrets.HEROKU_API_KEY}}
+          heroku_app_name: ${{secrets.HEROKU_APPLICATION_NAME}}
+          heroku_email: ${{secrets.HEROKU_EMAIL_ADDRESS}}
