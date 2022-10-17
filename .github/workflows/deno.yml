@@ -3,19 +3,19 @@ name: Run tests on project
 on:
   push:
     branches: [main]
-    
+
 jobs:
-  tests:
+  test:
     runs-on: ubuntu-latest
-    
+
     steps:
       - name: Setup repo
         uses: actions/checkout@v2
-        
-      - name: Setup deno
+
+      - name: Setup Deno
         uses: denoland/setup-deno@v1
         with:
-          deno-version: "v.1.22.0"
-          
+          deno-version: "v1.22.0"
+
       - name: Run tests
         run: deno test --allow-all
