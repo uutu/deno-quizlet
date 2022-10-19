@@ -7,5 +7,6 @@ const router = new Router();
 router.get("/", mainController.showMain);
 
 router.get("/topics", topicController.listAvailableTopics);
+router.get("/topics/:id", topicController.showTopicQuestionsById);
 
 export { router };

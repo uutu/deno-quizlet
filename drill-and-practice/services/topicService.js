@@ -7,4 +7,12 @@ const listAvailableTopics = async () => {
     return res.rows;
 };
 
-export { listAvailableTopics };
+const retrieveTopicById = async (id) => {
+    const res = await executeQuery(
+        "SELECT * FROM topics WHERE id = $id",
+        { id: id }
+    );
+    return res.rows[0];
+};
+
+export { listAvailableTopics, retrieveTopicById };

@@ -1,0 +1,28 @@
+<% layout("./layouts/layout.eta") %>
+
+<h1>Questions!</h1>
+
+<h2>Add a new question for topic: <%=it.currentTopic.name%></h2>
+
+<form method="POST" action="/topics/<%= it.currentTopic.id %>/question">
+    Question:<input type="textarea" name="question_text"/>
+    <input type="submit" value="Add a new question"/>
+</form>
+
+<h2>Available questions</h2>
+
+<% if (it.availableQuestions && it.availableQuestions.length > 0) { %>
+
+<ul>
+<% it.availableQuestions.forEach(question => { %>
+    <li>
+        <a href="/topics/<%= question.id %>"><%= question.question_text %></a>
+    </li>
+<% }); %>
+</ul>
+
+<% } else { %>
+
+<p>None available.</p>
+
+<% } %>
