@@ -9,4 +9,11 @@ const listAllQuestionsForTopic = async (id) => {
     return result.rows;
 };
 
-export { listAllQuestionsForTopic };
+const addQuestionToTopic = async (question, topicId, userId) => {
+    await executeQuery(
+        "INSERT INTO questions (question_text, topic_id, user_id) VALUES ($question, $topic, $user)",
+        { question: question, topic: topicId, user: userId },
+    );
+};
+
+export { listAllQuestionsForTopic, addQuestionToTopic };

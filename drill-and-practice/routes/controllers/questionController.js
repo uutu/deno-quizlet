@@ -21,8 +21,6 @@ const getQuestionData = async (request) => {
 const addQuestionToTopicById = async ({ request, response, render }) => {
 
     const questionData = await getQuestionData(request);
-
-    const urlParts = request.url.pathname.split("/");
     
     const [passes, errors] = await validasaur.validate(
         questionData,
@@ -34,11 +32,14 @@ const addQuestionToTopicById = async ({ request, response, render }) => {
         questionData.validationErrors = errors;
         render("topicPageById.eta", questionData);
     } else {
-        /*
-         * DB add
-         */
+
+        // userId default to 1 until authentication is implemented
+        let userId = 1;
+
+        await questionService.addQuestionToTopic(questionData.name, questionData.currentTopic.id, userId); 
+
         console.log("Input okay: redirecting");
-        response.redirect(`/topics/${urlParts[2]}`);
+        response.redirect(`/topics/${questionData.currentTopic.id}`);
     }  
 };
 
