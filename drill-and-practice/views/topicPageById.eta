@@ -4,10 +4,20 @@
 
 <h2>Add a new question for topic: <%=it.currentTopic.name%></h2>
 
-<form method="POST" action="/topics/<%= it.currentTopic.id %>/question">
+<form method="POST" action="/topics/<%= it.currentTopic.id %>/questions">
     Question:<input type="textarea" name="question_text"/>
     <input type="submit" value="Add a new question"/>
 </form>
+
+<% if (it.validationErrors) { %>
+<ul>
+    <% Object.keys(it.validationErrors).forEach((attribute) => { %>
+        <% Object.values(it.validationErrors[attribute]).forEach((err) => { %>
+            <li><%= err %></li>
+        <% }); %>
+    <% }); %>
+</ul>
+<% } %>
 
 <h2>Available questions</h2>
 
