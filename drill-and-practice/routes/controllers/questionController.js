@@ -1,5 +1,6 @@
 import * as questionService from "../../services/questionService.js";
 import * as topicService from "../../services/topicService.js";
+import * as optionService from "../../services/optionService.js";
 import { validasaur } from "../../deps.js";
 
 const questionValidationRules = {
@@ -45,10 +46,9 @@ const addQuestionToTopicById = async ({ request, response, render }) => {
 
 const showQuestionById = async ({ params, render }) => {
 
-    console.log(params.qId);
-
     render("questionPage.eta", {
         currentQuestion: await questionService.retrieveQuestionById(params.qId),
+        availableOptions: await optionService.listAllOptionsForQuestion(params.qId),
     });
 };
 

@@ -8,3 +8,31 @@
     Check box if the answer is the correct answer:<input type="checkbox" name="is_correct"/>
     <input type="submit" value="Add answer option"/>
 </form>
+
+<% if (it.validationErrors) { %>
+<ul>
+    <% Object.keys(it.validationErrors).forEach((attribute) => { %>
+        <% Object.values(it.validationErrors[attribute]).forEach((err) => { %>
+            <li><%= err %></li>
+        <% }); %>
+    <% }); %>
+</ul>
+<% } %>
+
+<h2>Available answer options</h2>
+
+<% if (it.availableOptions && it.availableOptions.length > 0) { %>
+
+<ul>
+<% it.availableOptions.forEach(option => { %>
+    <li>
+        <%= option.option_text %> : (<%= option.is_correct%>)
+    </li>
+<% }); %>
+</ul>
+
+<% } else { %>
+
+<p>None available.</p>
+
+<% } %>
