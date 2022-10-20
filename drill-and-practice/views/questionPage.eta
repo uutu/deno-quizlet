@@ -1,0 +1,10 @@
+
+<h1>Question: <%= it.currentQuestion.question_text%></h1>
+
+<h2>Add an answer option</h2>
+
+<form method="POST" action="/topics/<%=it.currentQuestion.topic_id%>/questions/<%=it.currentQuestion.id%>/options">
+    Answer option:<input type="textarea" name="option_text"/>
+    Check box if the answer is the correct answer:<input type="checkbox" name="is_correct"/>
+    <input type="submit" value="Add answer option"/>
+</form>

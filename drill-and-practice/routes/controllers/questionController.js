@@ -43,4 +43,13 @@ const addQuestionToTopicById = async ({ request, response, render }) => {
     }  
 };
 
-export { addQuestionToTopicById };
+const showQuestionById = async ({ params, render }) => {
+
+    console.log(params.qId);
+
+    render("questionPage.eta", {
+        currentQuestion: await questionService.retrieveQuestionById(params.qId),
+    });
+};
+
+export { addQuestionToTopicById, showQuestionById };

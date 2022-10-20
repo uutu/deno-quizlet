@@ -11,5 +11,6 @@ router.get("/topics", topicController.listAvailableTopics);
 router.get("/topics/:id", topicController.showTopicQuestionsById);
 
 router.post("/topics/:id/questions", questionController.addQuestionToTopicById);
+router.get("/topics/:id/questions/:qId", questionController.showQuestionById);
 
 export { router };

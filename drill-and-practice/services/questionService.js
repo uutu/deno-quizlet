@@ -16,4 +16,13 @@ const addQuestionToTopic = async (question, topicId, userId) => {
     );
 };
 
-export { listAllQuestionsForTopic, addQuestionToTopic };
+const retrieveQuestionById = async (questionId) => {
+    const result = await executeQuery(
+        "SELECT * FROM questions WHERE id = $id",
+        { id: questionId }
+    );
+
+    return result.rows[0];
+};
+
+export { listAllQuestionsForTopic, addQuestionToTopic, retrieveQuestionById };
