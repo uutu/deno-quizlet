@@ -1,10 +1,11 @@
+const restrictedPaths = ["/topics", "/quiz"];
 
 const authMiddleware = async (context, next) => {
     const user = await context.state.session.get("user");
 
-    // Add restrictions to illegal paths, check for them
-    if (!user) {
-        context.response.redirect("/auth/login");
+    if (!user && restrictedPaths.some((path) =>
+        context.request.url.pathname.startsWith(path))) {
+            context.response.redirect("/auth/login");
     } else {
         await next();
     }
