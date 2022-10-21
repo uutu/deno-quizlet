@@ -9,4 +9,13 @@ const addUser = async (email, password) => {
     );
 };
 
-export { addUser };
+const returnUserByEmail = async (email) => {
+    const result = await executeQuery(
+        "SELECT * FROM users WHERE email = $email",
+        { email: email }
+    );
+
+    return result.rows;
+};
+
+export { addUser, returnUserByEmail };

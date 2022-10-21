@@ -5,6 +5,7 @@ import * as questionController from "./controllers/questionController.js";
 import * as optionController from "./controllers/optionController.js";
 
 import * as registrationController from "./controllers/registrationController.js";
+import * as loginController from "./controllers/loginController.js";
 
 const router = new Router();
 
@@ -12,6 +13,9 @@ router.get("/", mainController.showMain);
 
 router.get("/auth/register", registrationController.showRegistrationForm);
 router.post("/auth/register", registrationController.registerNewUser);
+
+router.get("/auth/login", loginController.showLoginForm);
+router.post("/auth/login", loginController.processLoginRequest);
 
 router.get("/topics", topicController.listAvailableTopics);
 router.get("/topics/:id", topicController.showTopicQuestionsById);
