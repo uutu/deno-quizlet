@@ -52,4 +52,11 @@ const showQuestionById = async ({ params, render }) => {
     });
 };
 
-export { addQuestionToTopicById, showQuestionById };
+const deleteQuestionById = async ({ params, response }) => {
+
+    await questionService.deleteQuestionById(params.qId);
+
+    response.redirect(`/topics/${params.tId}`);
+};
+
+export { addQuestionToTopicById, showQuestionById, deleteQuestionById };

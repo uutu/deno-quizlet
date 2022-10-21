@@ -25,4 +25,11 @@ const retrieveQuestionById = async (questionId) => {
     return result.rows[0];
 };
 
-export { listAllQuestionsForTopic, addQuestionToTopic, retrieveQuestionById };
+const deleteQuestionById = async (questionId) => {
+    await executeQuery(
+        "DELETE FROM questions WHERE id = $qId",
+        { qId: questionId},
+    );
+};
+
+export { listAllQuestionsForTopic, addQuestionToTopic, retrieveQuestionById, deleteQuestionById };

@@ -36,6 +36,10 @@
 
 <% } else { %>
 
-<p>None available.</p>
+<p>None available. Delete question?</p>
+
+<form method="POST" action="/topics/<%=it.currentQuestion.topic_id%>/questions/<%=it.currentQuestion.id%>/delete">
+    <input type="submit" value="Delete question"/>
+</form>
 
 <% } %>
