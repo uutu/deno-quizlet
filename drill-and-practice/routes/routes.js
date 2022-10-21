@@ -4,9 +4,14 @@ import * as topicController from "./controllers/topicController.js";
 import * as questionController from "./controllers/questionController.js";
 import * as optionController from "./controllers/optionController.js";
 
+import * as registrationController from "./controllers/registrationController.js";
+
 const router = new Router();
 
 router.get("/", mainController.showMain);
+
+router.get("/auth/register", registrationController.showRegistrationForm);
+router.post("/auth/register", registrationController.registerNewUser);
 
 router.get("/topics", topicController.listAvailableTopics);
 router.get("/topics/:id", topicController.showTopicQuestionsById);
