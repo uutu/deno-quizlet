@@ -16,4 +16,6 @@ router.get("/topics/:id/questions/:qId", questionController.showQuestionById);
 
 router.post("/topics/:id/questions/:qId/options", optionController.addOptionToQuestion);
 
+router.post("/topics/:tId/questions/:qId/options/:oId/delete", optionController.deleteOptionById);
+
 export { router };

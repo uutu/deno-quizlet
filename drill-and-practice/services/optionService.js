@@ -17,4 +17,16 @@ const listAllOptionsForQuestion = async (id) => {
     return result.rows;
 };
 
-export { addOptionById, listAllOptionsForQuestion };
+const deleteOptionAndAnswersCascade = async (oId) => {
+    await executeQuery(
+        "DELETE FROM question_answer_options WHERE id = $oId",
+        { oId: oId },
+    );
+
+    await executeQuery(
+        "DELETE FROM question_answers WHERE question_answer_option_id = $oId",
+        { oId: oId },
+    );
+};
+
+export { addOptionById, listAllOptionsForQuestion, deleteOptionAndAnswersCascade };

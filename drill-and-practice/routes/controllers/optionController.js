@@ -24,8 +24,6 @@ const addOptionToQuestion = async ({ request, response, render }) => {
 
     const optionData = await getOptionData(request);
 
-    console.log(optionData);
-
     const [passes, errors] = await validasaur.validate(
         optionData,
         optionValidationRules,
@@ -46,7 +44,14 @@ const addOptionToQuestion = async ({ request, response, render }) => {
         console.log("Input okay: redirecting");
         response.redirect(`/topics/${optionData.currentQuestion.topic_id}/questions/${optionData.currentQuestion.id}`);
     }  
-
 };
 
-export { addOptionToQuestion };
+const deleteOptionById = async ({ params, response }) => {
+
+    await optionService.deleteOptionAndAnswersCascade(params.oId);
+    
+    
+    response.redirect(`/topics/${params.tId}/questions/${params.qId}`); 
+};
+
+export { addOptionToQuestion, deleteOptionById };
