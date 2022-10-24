@@ -19,7 +19,7 @@ const getQuestionData = async (request) => {
     };
 };
 
-const addQuestionToTopicById = async ({ request, response, render, user }) => {
+const addQuestionToTopicById = async ({ request, response, render, state }) => {
 
     const questionData = await getQuestionData(request);
     
@@ -34,10 +34,9 @@ const addQuestionToTopicById = async ({ request, response, render, user }) => {
         render("topicPageById.eta", questionData);
     } else {
 
-        // userId default to 1 until authentication is implemented
-        let userId = 1;
+        questionData.user = await state.session.get("user");
 
-        await questionService.addQuestionToTopic(questionData.name, questionData.currentTopic.id, user.id); 
+        await questionService.addQuestionToTopic(questionData.name, questionData.currentTopic.id, questionData.user.id); 
 
         console.log("Input okay: redirecting");
         response.redirect(`/topics/${questionData.currentTopic.id}`);
