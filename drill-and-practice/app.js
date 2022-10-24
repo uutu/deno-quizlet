@@ -12,6 +12,7 @@ app.use(session.initMiddleware());
 
 app.use(authMiddleware);
 app.use(errorMiddleware);
+app.use(authMiddleware);
 app.use(serveStaticMiddleware);
 app.use(renderMiddleware);
 app.use(router.routes());

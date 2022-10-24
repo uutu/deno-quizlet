@@ -15,4 +15,11 @@ const retrieveTopicById = async (id) => {
     return res.rows[0];
 };
 
-export { listAvailableTopics, retrieveTopicById };
+const addNewTopic = async (userId, name) => {
+    await executeQuery(
+        "INSERT INTO topics (user_id, name) VALUES ($userId, $name)",
+        { userId: userId.id, name: name }
+    );
+};
+
+export { listAvailableTopics, retrieveTopicById, addNewTopic };

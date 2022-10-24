@@ -18,6 +18,7 @@ router.get("/auth/login", loginController.showLoginForm);
 router.post("/auth/login", loginController.processLoginRequest);
 
 router.get("/topics", topicController.listAvailableTopics);
+router.post("/topics", topicController.addNewTopic);
 router.get("/topics/:id", topicController.showTopicQuestionsById);
 
 router.post("/topics/:id/questions", questionController.addQuestionToTopicById);

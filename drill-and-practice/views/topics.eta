@@ -4,15 +4,39 @@
 
 <h2>Available topics</h2>
 
+<p><%=it.user.admin%></p>
+
 <% if (it.availableTopics && it.availableTopics.length > 0) { %>
 
 <ul>
 <% it.availableTopics.forEach(topic => { %>
     <li>
         <a href="/topics/<%= topic.id %>"><%= topic.name %></a>
+        <% if (it.user.admin === true) { %>
+            <form method="POST" action="/topics/<%= topic.id %>/delete">
+                <input type="submit" value="Delete"/>
+            </form>
+        <% } %>            
     </li>
 <% }); %>
 </ul>
+    <% if (it.user.admin === true) { %>
+        <p>hei olen admin</p>
+        <form method="POST" action="/topics">
+            <input type="text" name="name"/>
+            <input type="submit" value="Add a new topic"/>
+        </form>
+
+        <% if (it.validationErrors) { %>
+            <ul>
+                <% Object.keys(it.validationErrors).forEach((attribute) => { %>
+                    <% Object.values(it.validationErrors[attribute]).forEach((err) => { %>
+                    <li><%= err %></li>
+                    <% }); %>
+                <% }); %>
+            </ul>
+        <% } %>
+    <% } %>
 
 <% } else { %>
 
