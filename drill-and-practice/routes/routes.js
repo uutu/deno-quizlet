@@ -20,6 +20,7 @@ router.post("/auth/login", loginController.processLoginRequest);
 router.get("/topics", topicController.listAvailableTopics);
 router.post("/topics", topicController.addNewTopic);
 router.get("/topics/:id", topicController.showTopicQuestionsById);
+router.post("/topics/:id/delete", topicController.deleteTopicById);
 
 router.post("/topics/:id/questions", questionController.addQuestionToTopicById);
 router.get("/topics/:id/questions/:qId", questionController.showQuestionById);

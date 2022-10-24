@@ -22,4 +22,8 @@ const addNewTopic = async (userId, name) => {
     );
 };
 
-export { listAvailableTopics, retrieveTopicById, addNewTopic };
+const deleteTopicByIdCascade = async (id) => {
+    // TODO
+};
+
+export { listAvailableTopics, retrieveTopicById, addNewTopic, deleteTopicByIdCascade };
