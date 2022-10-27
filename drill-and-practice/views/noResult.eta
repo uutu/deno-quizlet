@@ -1,0 +1,5 @@
+<% layout("./layouts/layout.eta") %>
+
+<h1>Unfortunately there are no available questions for the topic..</h1>
+
+<a href="/quiz">Move back to select another topic</a>

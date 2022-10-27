@@ -1,0 +1,26 @@
+<% layout("./layouts/layout.eta") %>
+
+<h1>Quiz time!</h1>
+
+<h2>Question: <%=it.question.question_text %></h2>
+
+<h2>Available options</h2>
+
+<% if (it.questionOptions && it.questionOptions.length > 0) { %>
+
+<ul>
+<% it.questionOptions.forEach(option => { %>
+    <li>
+        <%=option.option_text%>
+        <form method="POST" action="/quiz/<%= it.question.topic_id %>/questions/<%= it.question.id %>/options/<%= option.id %>">
+            <input type="submit" value="Choose"/>
+        </form>
+    </li>
+<% }); %>
+</ul>
+
+<% } else { %>
+
+<p>No answer options added for the question.</p>
+
+<% } %>
