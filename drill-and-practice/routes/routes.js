@@ -3,6 +3,7 @@ import * as mainController from "./controllers/mainController.js";
 import * as topicController from "./controllers/topicController.js";
 import * as questionController from "./controllers/questionController.js";
 import * as optionController from "./controllers/optionController.js";
+import * as quizController from "./controllers/quizController.js";
 
 import * as registrationController from "./controllers/registrationController.js";
 import * as loginController from "./controllers/loginController.js";
@@ -31,5 +32,12 @@ router.post("/topics/:tId/questions/:qId/delete", questionController.deleteQuest
 router.post("/topics/:id/questions/:qId/options", optionController.addOptionToQuestion);
 
 router.post("/topics/:tId/questions/:qId/options/:oId/delete", optionController.deleteOptionById);
+
+router.get("/quiz", quizController.showAvailableTopics);
+router.get("/quiz/:tId", quizController.retrieveRandomQuestionForTopic);
+router.get("/quiz/:tId/questions/:qId", quizController.displayQuizForQuestion);
+router.post("/quiz/:tId/questions/:qId/options/:oId", quizController.storeAnswerAndRedirect);
+router.get("/quiz/:tId/questions/:qId/correct", quizController.renderCorrectPage);
+router.get("/quiz/:tId/questions/:qId/incorrect", quizController.renderIncorrectPage);
 
 export { router };

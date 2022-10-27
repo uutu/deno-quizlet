@@ -29,4 +29,24 @@ const deleteOptionAndAnswersCascade = async (oId) => {
     );
 };
 
-export { addOptionById, listAllOptionsForQuestion, deleteOptionAndAnswersCascade };
+const checkForCorrectness = async (optionId) => {
+    const result = await executeQuery(
+        `SELECT * FROM question_answer_options
+            WHERE id = $optionId`,
+            { optionId: optionId }
+    );
+    return result.rows[0];
+};
+
+const retrieveCorrectOptions = async (questionId) => {
+    const result = await executeQuery(
+        `SELECT * FROM question_answer_options
+        WHERE question_id = $questionId 
+            AND is_correct = $true`,
+            { questionId: questionId, true: true}
+    );
+
+    return result.rows;
+};
+
+export { addOptionById, listAllOptionsForQuestion, deleteOptionAndAnswersCascade, checkForCorrectness, retrieveCorrectOptions };

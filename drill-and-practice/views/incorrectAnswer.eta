@@ -1,0 +1,17 @@
+<% layout("./layouts/layout.eta") %>
+
+<h1>Incorrect!</h1>
+
+<% if (it.correctAnswers && it.correctAnswers.length > 0) { %>
+
+<ul>
+<% it.correctAnswers.forEach(answer => { %>
+    <li>
+        The correct option was <%= answer.option_text %>
+    </li>
+<% }); %>
+</ul>
+
+<% } %>
+
+<a href="/quiz/<%= it.topicId %>">Next question</a>
