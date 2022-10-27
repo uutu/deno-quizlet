@@ -1,3 +1,17 @@
 <% layout("./layouts/layout.eta") %>
 
-<h1>Hello world! We're here!</h1>
+<h1>Hello! Welcome to the quizlet!</h1>
+
+<p>The application is a web app where registered users 
+can create new quiz questions and give answers to predefined topics!</p>
+
+<p>After creating questions and answers, users can practice them
+by answering questions generated randomly on the server. </p>
+
+<p>If you're new, start by registering <a href="/auth/register">Here</a></p>
+<p>If you've already got an account, please login <a href="/auth/login">Here</a></p>
+
+<h2>Application statistics:</h2>
+<p>Created topics by the admin: <%= it.statistics.topics.count %> </p>
+<p>Created questions by the community: <%= it.statistics.questions.count %> </p>
+<p>Answered questions by the community: <%= it.statistics.answers.count %> </p>
