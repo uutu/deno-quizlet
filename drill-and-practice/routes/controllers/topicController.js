@@ -47,12 +47,31 @@ const addNewTopic = async ({ request, render, response, state }) => {
         topicData.validationErrors = errors;
         render("topics.eta", topicData);
     } else {
-        await topicService.addNewTopic(
-            topicData.user,
-            topicData.name,
-        );
+
+        if (topicData.user.admin === true) {
+            await topicService.addNewTopic(
+                topicData.user,
+                topicData.name,
+            );
+        }
+        
         response.redirect("/topics");
     }
 };
 
-export { listAvailableTopics, showTopicQuestionsById, addNewTopic };
+const deleteTopicById = async ({ params, request, response, state }) => {
+    const user = await state.session.get("user");
+    const id = params.id;
+
+    if (user.admin === true) {
+        console.log("hello, I'm admin");
+        console.log(id);
+
+        // Split the SQL queries into separate simpler ones !
+        await topicService.deleteTopicByIdCascade(id);
+        
+    }
+    response.redirect("/topics");
+};
+
+export { listAvailableTopics, showTopicQuestionsById, addNewTopic, deleteTopicById };

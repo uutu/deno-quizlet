@@ -22,4 +22,32 @@ const addNewTopic = async (userId, name) => {
     );
 };
 
-export { listAvailableTopics, retrieveTopicById, addNewTopic };
+const deleteTopicByIdCascade = async (id) => {
+
+    await executeQuery(
+        `DELETE FROM question_answers
+            WHERE exists (SELECT FROM questions
+                        WHERE questions.topic_id = $id)`,
+                        { id: id }
+    );
+
+    await executeQuery(
+        `DELETE FROM question_answer_options
+            WHERE exists (SELECT FROM questions
+                        WHERE questions.topic_id = $id)`,
+                        { id: id }
+    );
+
+    await executeQuery(
+        `DELETE FROM questions WHERE questions.topic_id = $id`,
+        { id: id }
+    );
+
+
+    await executeQuery(
+        `DELETE FROM topics WHERE id = $id`,
+        { id: id }
+    );
+};
+
+export { listAvailableTopics, retrieveTopicById, addNewTopic, deleteTopicByIdCascade };
