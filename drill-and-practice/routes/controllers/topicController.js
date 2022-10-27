@@ -66,6 +66,8 @@ const deleteTopicById = async ({ params, request, response, state }) => {
     if (user.admin === true) {
         console.log("hello, I'm admin");
         console.log(id);
+
+        // Split the SQL queries into separate simpler ones !
         await topicService.deleteTopicByIdCascade(id);
         
     }
