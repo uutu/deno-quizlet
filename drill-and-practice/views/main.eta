@@ -1,17 +1,40 @@
 <% layout("./layouts/layout.eta") %>
 
-<h1>Hello! Welcome to the quizlet!</h1>
+<h1>Welcome to the quizlet!</h1>
 
-<p>The application is a web app where registered users 
+<p class="flow-text">The application is a web app where registered users 
 can create new quiz questions and give answers to predefined topics!</p>
+<p class="flow-text">Start by adding questions and answer options to them.</p>
 
-<p>After creating questions and answers, users can practice them
-by answering questions generated randomly on the server. </p>
+<p class="flow-text">After creating questions and answers, users can practice them
+by answering questions generated randomly on the server. The main page shows statistics of the database. </p>
 
-<p>If you're new, start by registering <a href="/auth/register">Here</a></p>
-<p>If you've already got an account, please login <a href="/auth/login">Here</a></p>
+  <div class="row">
+    <div class="col s12 m6">
+      <div class="card teal darken-2">
+        <div class="card-content white-text">
+          <span class="card-title">Getting started</span>
+          <p>If you're new here and want to get started with using the application, use these helpful links below!</p>
+        </div>
+        <div class="card-action">
+          <a href="/auth/register">Register here</a>
+          <a href="/auth/login">Login here</a>
+        </div>
+      </div>
+    </div>
+  </div>
 
-<h2>Application statistics:</h2>
-<p>Created topics by the admin: <%= it.statistics.topics.count %> </p>
-<p>Created questions by the community: <%= it.statistics.questions.count %> </p>
-<p>Answered questions by the community: <%= it.statistics.answers.count %> </p>
+<ul class="collection with-header">
+    <li class="collection-header"><h4>Application statistics:</h4></li>
+    <li class="collection-item">Created topics by the admin: <%= it.statistics.topics.count %> </li>
+    <li class="collection-item">Created questions by the community: <%= it.statistics.questions.count %> </li>
+    <li class="collection-item">Answered questions by the community: <%= it.statistics.answers.count %> </li>
+</ul>
+
+  <footer class="page-footer">
+    <div class="footer-copyright">
+      <div class="container">
+        Powered by Deno & oak framework, built by yours truly
+      </div>
+    </div>
+  </footer>

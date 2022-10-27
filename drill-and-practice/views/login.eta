@@ -1,13 +1,15 @@
 <% layout("./layouts/layout.eta") %>
 
-<h1>Login to the service!</h1>
+<h2>Login to the service!</h2>
 
 <form method="POST" action="/auth/login">
-    Email:<br/>
-    <input type="email" name="email"/><br/>
-    Password:<br/>
-    <input type="password" name="password"/><br/>
-    <input type="submit" value="Login"/>
+    <label for="email">Email:</label>
+    <input type="email" name="email"/>
+    <label for="password">Password:</label>
+    <input type="password" name="password"/>
+
+    <button class="btn waves-effect waves-light" type="submit" name="action">Login
+    </button>
 </form>
 
 <% if (it.feedback) { %>
