@@ -1,6 +1,8 @@
 <% layout("./layouts/layout.eta") %>
 
-<h2>Login to the service!</h2>
+<h1>Login to the service!</h1>
+
+<p>Please use the form below to login as an existing user of the service.</p>
 
 <form method="POST" action="/auth/login">
     <label for="email">Email:</label>

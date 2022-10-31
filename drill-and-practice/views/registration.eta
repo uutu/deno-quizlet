@@ -2,12 +2,15 @@
 
 <h1>Register to the service!</h1>
 
+<p>Please use the form below to register as a new user to the service.</p>
+
 <form method="POST" action="/auth/register">
-    Email:<br/>
-    <input type="email" name="email" value="<%= it.email ? it.email : "" %>"/><br/>
-    Password:<br/>
-    <input type="password" name="password" /><br/>
-    <input type="submit" value="Register" />
+    <label for="email">Email:</label>
+    <input type="email" name="email" value="<%= it.email ? it.email : "" %>"/>
+    <label for="password">Password:</label>
+    <input type="password" name="password" />
+    <button class="btn waves-effect waves-light" type="submit" name="action">Register
+    </button>
 </form>
 
 <% if (it.validationErrors) { %>

@@ -1,8 +1,6 @@
 <% layout("./layouts/layout.eta") %>
 
-<h1>Quiz time!</h1>
-
-<h2>Question: <%=it.question.question_text %></h2>
+<h1>Question: <%=it.question.question_text %></h1>
 
 <h2>Available options</h2>
 
@@ -13,7 +11,8 @@
     <li>
         <%=option.option_text%>
         <form method="POST" action="/quiz/<%= it.question.topic_id %>/questions/<%= it.question.id %>/options/<%= option.id %>">
-            <input type="submit" value="Choose"/>
+            <button class="btn waves-effect waves-light" type="submit" name="action">Choose option
+            </button>
         </form>
     </li>
 <% }); %>
@@ -21,6 +20,6 @@
 
 <% } else { %>
 
-<p>No answer options added for the question.</p>
+<p>No answer options added for the question yet..</p>
 
 <% } %>

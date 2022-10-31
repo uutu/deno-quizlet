@@ -8,7 +8,7 @@
 <body>
   <div class="container">
     <nav>
-      <div class="nav-wrapper">
+      <div class="nav-wrapper teal lighten-1">
         <ul class="left">
           <li><a href="/">Main page</a></li>
           <li><a href="/topics">Topics</a></li>

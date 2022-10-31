@@ -2,6 +2,9 @@
 
 <h1>Quiz!</h1>
 
+<p>It's time to practice! Below you can find topics added in the application. Begin answering questions
+by selecting a topic.</p>
+
 <h2>Available topics for a quiz</h2>
 
 <% if (it.availableTopics && it.availableTopics.length > 0) { %>

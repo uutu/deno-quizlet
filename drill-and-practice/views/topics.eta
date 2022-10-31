@@ -2,6 +2,11 @@
 
 <h1>Topics!</h1>
 
+<p>You can find topics below that have been added to the application
+by the admin.</p>
+
+<p>Select a topic and start by adding questions and answer options to it.</p>
+
 <h2>Available topics</h2>
 
 <% if (it.availableTopics && it.availableTopics.length > 0) { %>
@@ -12,7 +17,8 @@
         <a href="/topics/<%= topic.id %>"><%= topic.name %></a>
         <% if (it.user.admin === true) { %>
             <form method="POST" action="/topics/<%= topic.id %>/delete">
-                <input type="submit" value="Delete"/>
+                <button class="btn waves-effect waves-light" type="submit" name="action">Delete
+                </button>
             </form>
         <% } %>            
     </li>
@@ -27,8 +33,10 @@
 
 <% if (it.user.admin === true) { %>
     <form method="POST" action="/topics">
+        <label for="name">Topic name:</label>
         <input type="text" name="name"/>
-        <input type="submit" value="Add a new topic"/>
+        <button class="btn waves-effect waves-light" type="submit" name="action">Add a new topic
+        </button>
     </form>
 
     <% if (it.validationErrors) { %>

@@ -2,11 +2,16 @@
 
 <h1>Questions!</h1>
 
+<p>This page contains all of the questions added to a topic.
+Use the form below to add a new question.</p>
+
 <h2>Add a new question for topic: <%=it.currentTopic.name%></h2>
 
 <form method="POST" action="/topics/<%= it.currentTopic.id %>/questions">
-    Question:<input type="textarea" name="question_text"/>
-    <input type="submit" value="Add a new question"/>
+    <label for="question_text">Question:</label>
+    <input type="textarea" name="question_text"/>
+    <button class="btn waves-effect waves-light" type="submit" name="action">Add a new question
+    </button>
 </form>
 
 <% if (it.validationErrors) { %>

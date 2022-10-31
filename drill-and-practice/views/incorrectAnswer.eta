@@ -2,6 +2,8 @@
 
 <h1>Incorrect!</h1>
 
+<p>Close, but no cigar! Try again with another question.</p>
+
 <% if (it.correctAnswers && it.correctAnswers.length > 0) { %>
 
 <ul>

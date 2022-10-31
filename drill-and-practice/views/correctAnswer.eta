@@ -2,4 +2,6 @@
 
 <h1>Correct!</h1>
 
+<p>Awesome job! Way to go!</p>
+
 <a href="/quiz/<%= it.topicId %>">Next question</a>
