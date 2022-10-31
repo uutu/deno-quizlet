@@ -24,4 +24,20 @@ const returnRandomQuestion = async ({ response }) => {
     }
 };
 
-export { returnRandomQuestion };
+const checkAnswer = async ({ request, response }) => {
+    const body = request.body({ type: "json" });
+    const object = JSON.stringify(body);
+
+    const correctOptions = await optionService.retrieveCorrectOptions(object.questionId);
+
+    for (let i = 0; i < correctOptions.length; i++) {
+        if (correctOptions[i].id === object.optionId) {
+            response.body = {"correct":"true"};
+            break;
+        }
+    };
+
+    response.body = {"correct":"false"};  
+};
+
+export { returnRandomQuestion, checkAnswer };
