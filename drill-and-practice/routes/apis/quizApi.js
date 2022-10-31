@@ -26,18 +26,18 @@ const returnRandomQuestion = async ({ response }) => {
 
 const checkAnswer = async ({ request, response }) => {
     const body = request.body({ type: "json" });
-    const object = JSON.stringify(body);
+    const params = await body.value;
 
-    const correctOptions = await optionService.retrieveCorrectOptions(object.questionId);
+    const correctOptions = await optionService.retrieveCorrectOptions(params.questionId);
 
     for (let i = 0; i < correctOptions.length; i++) {
-        if (correctOptions[i].id === object.optionId) {
+        if (JSON.stringify(correctOptions[i].id) === params.optionId) {
             response.body = {"correct":"true"};
             break;
+        } else {
+            response.body = {"correct":"false"};  
         }
-    };
-
-    response.body = {"correct":"false"};  
+    }; 
 };
 
 export { returnRandomQuestion, checkAnswer };
