@@ -32,4 +32,14 @@ const deleteQuestionById = async (questionId) => {
     );
 };
 
-export { listAllQuestionsForTopic, addQuestionToTopic, retrieveQuestionById, deleteQuestionById };
+const returnRandomQuestion = async () => {
+    const result = await executeQuery(
+        `SELECT * FROM questions
+            ORDER BY RANDOM()
+            LIMIT 1`,
+    );
+    
+    return result.rows[0];
+};
+
+export { listAllQuestionsForTopic, addQuestionToTopic, retrieveQuestionById, deleteQuestionById, returnRandomQuestion };

@@ -7,6 +7,7 @@ import * as quizController from "./controllers/quizController.js";
 
 import * as registrationController from "./controllers/registrationController.js";
 import * as loginController from "./controllers/loginController.js";
+import * as quizApi from "./apis/quizApi.js";
 
 const router = new Router();
 
@@ -39,5 +40,7 @@ router.get("/quiz/:tId/questions/:qId", quizController.displayQuizForQuestion);
 router.post("/quiz/:tId/questions/:qId/options/:oId", quizController.storeAnswerAndRedirect);
 router.get("/quiz/:tId/questions/:qId/correct", quizController.renderCorrectPage);
 router.get("/quiz/:tId/questions/:qId/incorrect", quizController.renderIncorrectPage);
+
+router.get("/api/questions/random", quizApi.returnRandomQuestion);
 
 export { router };
