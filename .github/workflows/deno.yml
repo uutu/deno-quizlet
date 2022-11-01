@@ -19,8 +19,7 @@ jobs:
 
       - name: Run tests
         run: |
-          cd drill-and-practice
-          deno test --allow-all
+          docker-compose run --rm drill-and-practice test --allow-all
   
   deploy:
     runs-on: ubuntu-latest
