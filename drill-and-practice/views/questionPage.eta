@@ -21,13 +21,7 @@ Use the form below to add new ones or delete given options.</p>
 </form>
 
 <% if (it.validationErrors) { %>
-<ul>
-    <% Object.keys(it.validationErrors).forEach((attribute) => { %>
-        <% Object.values(it.validationErrors[attribute]).forEach((err) => { %>
-            <li><%= err %></li>
-        <% }); %>
-    <% }); %>
-</ul>
+    <% layout("./partials/validationErrors.eta") %>
 <% } %>
 
 <h2>Available answer options</h2>

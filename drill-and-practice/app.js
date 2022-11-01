@@ -11,7 +11,6 @@ const app = new Application();
 const session = new Session();
 app.use(session.initMiddleware());
 
-app.use(authMiddleware);
 app.use(errorMiddleware);
 app.use(authMiddleware);
 app.use(serveStaticMiddleware);

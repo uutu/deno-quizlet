@@ -1,8 +1,7 @@
 import { app } from "../../../app.js";
 import { superoak } from "../../../deps.js";
 
-Deno.test("Sending a simple GET request should return status code 200", async () => {
-    const testClient = await superoak(app);
-    await testClient.get("/api/questions/random").expect(200);
-});
-
+Deno.test("it will allow you to make assertions if you await it", async () => {
+    const request = await superoak(app);
+    await request.get("/").expect(200).expect("Hello Deno!");
+  });
