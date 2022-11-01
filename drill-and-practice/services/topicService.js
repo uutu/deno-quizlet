@@ -26,14 +26,14 @@ const deleteTopicByIdCascade = async (id) => {
 
     await executeQuery(
         `DELETE FROM question_answers
-            WHERE exists (SELECT FROM questions
+            WHERE question_id IN (SELECT id FROM questions
                         WHERE questions.topic_id = $id)`,
                         { id: id }
     );
 
     await executeQuery(
         `DELETE FROM question_answer_options
-            WHERE exists (SELECT FROM questions
+            WHERE question_id IN (SELECT id FROM questions
                         WHERE questions.topic_id = $id)`,
                         { id: id }
     );
