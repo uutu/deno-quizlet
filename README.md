@@ -8,9 +8,11 @@ Skip to the end of the document for instructions on how to test and run the appl
 
 The app follows a three-tier architecture (client, server, database) and is built following a layered architecture with four layers (views, controllers, services and a Postgres database).
 
+The views are eta-files rendered on the server, the app has a number of controllers with their separated conserns/responsibilities, a number of services responsible for SQL queries and a relational database where the data is stored and accessed from.
+
 ## Features of the application
 
-The subheaders outline the built features of the application based on the project requirement specifications.
+The bullets outline the built features of the application based on the project requirement specifications.
 
 + Listing topics
 
@@ -22,16 +24,31 @@ The subheaders outline the built features of the application based on the projec
 
 + Removing answer options and questions
 
-+ Login functionality
++ Login functionality (Login & Register)
 
-+ Asking questions
++ Asking questions (Quiz feature)
+
++ Statistics
+
+The main page has some rudimentary statistics about the data (topics, questions, answered questions). Removing tables from the database cascades to child-/foreign key tables as well.
 
 + Access control
 
+The important paths of the application `"/topics`, `"/quiz` are restricted for admins and registered users and redirect to login if accessed without the proper access rights. An authentication middleware is used alongside sessions to limit as well as keep track of the user interacting with the app.
+
 + Validation
+
+Basic functionality for validating entered form data server-side using the validasaur -library.
 
 + Encryption
 
+Passwords are encrypted using the brypt -library and no passwords are stored in plaintext format.
+
++ API
+
+The API provides means to retrieve random questions and answer them via JSON-objects.
+
+### User roles
 
 The application has three user roles: Admin, registered user, visitor. The table below outlines quickly what each user role can do with the application based on the features.
 
@@ -40,16 +57,16 @@ The application has three user roles: Admin, registered user, visitor. The table
 | Viewing topics | :heavy_check_mark: | :heavy_check_mark: | :white_check_mark: | 
 | Creating and removing topics | :heavy_check_mark: | :white_check_mark: | :white_check_mark: |
 | Creating and listing questions | :heavy_check_mark: | :heavy_check_mark: | :white_check_mark: |
+| Removing questions | :heavy_check_mark: | :heavy_check_mark: | :white_check_mark: |
 | Adding and removing answer options | :heavy_check_mark: | :heavy_check_mark: | :white_check_mark: |
 | Auth (register/login) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | Quiz functionality | :heavy_check_mark: | :heavy_check_mark: | :white_check_mark: |
 | API | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 
 
-
 ### Styles
 
-The app uses CDN for styling the rendered pages. The library used is [https://materializecss.com/].
+The app uses CDN for styling the rendered pages. The library used is Materialize https://materializecss.com/.
 
 ### CI/CD Pipeline
 
@@ -62,14 +79,14 @@ The application has a set of automated tests built using superoak, a testing lib
 
 ## Setup and running the application
 
-The Oak app is created in `app.js` where the app is exported. The application can be launched locally using the file `run_locally.js`. To build the application, run the command `docker-compose up` (or `docker compose up` without the hyphen) from the directory where `docker-compose.yml` is housed. The default location of the running app is [http://localhost:7777].
+The Oak app is created in `app.js` where the app is exported. The application can be launched locally using the file `run_locally.js`. To build the application, run the command `docker-compose up` (or `docker compose up` without the hyphen) from the directory where `docker-compose.yml` is housed. The default location of the running app is http://localhost:7777. Docker takes care of the app's dependencies for a quick&easy setup.
 
 The database is created automatically with a preset admin account and a single topic. To test the admin account, login using `admin@admin.com` with the password `123456`. 
 
 
 ## Deployed application url:
 
-The project can be found and tested at [https://quizlet-bonanza.herokuapp.com/].
+The project can be found and tested at https://quizlet-bonanza.herokuapp.com/.
 Note that the application start-up might take a moment if the service has been inactive for a while.
 Also note that the application will be taken offline sometime late November due to Heroku
 terms for PostgresSQL addon changing.
