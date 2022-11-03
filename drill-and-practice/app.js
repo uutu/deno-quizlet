@@ -15,7 +15,7 @@ app.use(errorMiddleware);
 app.use(authMiddleware);
 app.use(serveStaticMiddleware);
 app.use(renderMiddleware);
-app.use(oakCors());
+app.use(oakCors()); // Init CORS
 app.use(router.routes());
 
 export { app };

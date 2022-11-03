@@ -33,6 +33,12 @@ const deleteQuestionById = async (questionId) => {
 };
 
 const returnRandomQuestion = async () => {
+
+    /*
+     * Pseudo-randomise by ordering the results in a 
+     * random order and limiting the returned result
+     * to 1 row
+     */
     const result = await executeQuery(
         `SELECT * FROM questions
             ORDER BY RANDOM()

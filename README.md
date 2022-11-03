@@ -2,6 +2,8 @@
 
 The application is a Deno application built with Oak framework for repeated practice of learned content. Registered users can create multiple choice questions for admin-set topics that can be answered by other users. The app also provides a basic API.
 
+Note that the specs on handling correctness/incorrectness of an answer option was ambiguous so it's good to keep in mind that a question can have multiple correct answers, a single correct answer or no correct answers at all. So, in short, the application trusts the users to act in "good faith" when adding questions&answers while using the application.
+
 Skip to the end of the document for instructions on how to test and run the application.
 
 ## Structure
@@ -12,7 +14,7 @@ The views are eta-files rendered on the server, the app has a number of controll
 
 ## Features of the application
 
-The bullets outline the built features of the application based on the project requirement specifications.
+The bullets outline a quick overview of the built features of the application based on the project requirement specifications.
 
 + Listing topics
 
@@ -24,7 +26,7 @@ The bullets outline the built features of the application based on the project r
 
 + Removing answer options and questions
 
-+ Login functionality (Login & Register)
++ Authentication functionality (Login & Register)
 
 + Asking questions (Quiz feature)
 
@@ -34,7 +36,7 @@ The main page has some rudimentary statistics about the data (topics, questions,
 
 + Access control
 
-The important paths of the application `"/topics`, `"/quiz` are restricted for admins and registered users and redirect to login if accessed without the proper access rights. An authentication middleware is used alongside sessions to limit as well as keep track of the user interacting with the app.
+The important paths of the application `/topics`, `/quiz` are restricted for admins and registered users and redirect to login if accessed without the proper access rights. An authentication middleware is used alongside sessions to limit as well as keep track of the user interacting with the app.
 
 + Validation
 
@@ -60,7 +62,7 @@ The application has three user roles: Admin, registered user, visitor. The table
 | Removing questions | :heavy_check_mark: | :heavy_check_mark: | :white_check_mark: |
 | Adding and removing answer options | :heavy_check_mark: | :heavy_check_mark: | :white_check_mark: |
 | Auth (register/login) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| Quiz functionality | :heavy_check_mark: | :heavy_check_mark: | :white_check_mark: |
+| Quiz functionality and features | :heavy_check_mark: | :heavy_check_mark: | :white_check_mark: |
 | API | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 
 

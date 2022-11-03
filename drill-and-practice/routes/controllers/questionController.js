@@ -36,6 +36,7 @@ const addQuestionToTopicById = async ({ request, response, render, state }) => {
 
         questionData.user = await state.session.get("user");
 
+        // Call the service responsible for adding questions with the given parametres
         await questionService.addQuestionToTopic(questionData.name, questionData.currentTopic.id, questionData.user.id); 
 
         console.log("Input okay: redirecting");

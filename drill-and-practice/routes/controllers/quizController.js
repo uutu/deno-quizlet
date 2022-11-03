@@ -44,6 +44,7 @@ const storeAnswerAndRedirect = async ({ params, response, state }) => {
 
     const answer = await optionService.checkForCorrectness(params.oId);
     
+    // Redirect based on correct/incorrect answer
     if (answer.is_correct === true) {
         response.redirect(`/quiz/${params.tId}/questions/${params.qId}/correct`); 
     } else {

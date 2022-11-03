@@ -24,6 +24,13 @@ const addNewTopic = async (userId, name) => {
 
 const deleteTopicByIdCascade = async (id) => {
 
+    /* 
+     * Cascading DELETE query series where the children 
+     * are deleted first based on the parent's parametres using IN-operator
+     * and later the DELETE command is executed on the 
+     * parent tables so no foreign key contraints are violated.
+     */
+
     await executeQuery(
         `DELETE FROM question_answers
             WHERE question_id IN (SELECT id FROM questions

@@ -63,11 +63,10 @@ const deleteTopicById = async ({ params, request, response, state }) => {
     const user = await state.session.get("user");
     const id = params.id;
 
+    // Further user check
     if (user.admin === true) {
-        console.log("hello, I'm admin");
-        console.log(id);
 
-        // Split the SQL queries into separate simpler ones !
+        // Cascading delete command to remove child table contents
         await topicService.deleteTopicByIdCascade(id);
         
     }

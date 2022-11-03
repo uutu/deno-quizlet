@@ -48,8 +48,8 @@ const addOptionToQuestion = async ({ request, response, render }) => {
 
 const deleteOptionById = async ({ params, response }) => {
 
+    // Call service responsible for answer options with the parametre
     await optionService.deleteOptionAndAnswersCascade(params.oId);
-    
     
     response.redirect(`/topics/${params.tId}/questions/${params.qId}`); 
 };

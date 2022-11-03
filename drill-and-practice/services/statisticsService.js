@@ -20,7 +20,6 @@ const returnServiceStatistics = async() => {
     };
 
     return result;
-
 };
 
 export { returnServiceStatistics };
