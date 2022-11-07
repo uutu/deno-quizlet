@@ -7,7 +7,7 @@ Deno.test({
         const request = await superoak(app);
         await request.get("/api/questions/random")
             .expect(200)
-            .expect("Content-Type", "application/json; charset=utf-8");
+            .expect("Content-Type", "application/json; charset=UTF-8");
     },
     sanitizeResources: false,
     sanitizeOps: false,
