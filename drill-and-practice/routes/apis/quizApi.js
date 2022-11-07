@@ -31,11 +31,11 @@ const checkAnswer = async ({ request, response }) => {
     const correctOptions = await optionService.retrieveCorrectOptions(params.questionId);
 
     for (let i = 0; i < correctOptions.length; i++) {
-        if (JSON.stringify(correctOptions[i].id) === params.optionId) {
-            response.body = {"correct":"true"};
-            break;
+        // Conversions to strings for comparison, if true, return JSON with true
+        if (JSON.stringify(correctOptions[i].id) === params.optionId.toString()) {
+            response.body = {"correct": true };
         } else {
-            response.body = {"correct":"false"};  
+            response.body = {"correct": false };
         }
     }; 
 };
