@@ -8,8 +8,7 @@ import { oakCors} from "./deps.js";
 
 const app = new Application();
 
-const session = new Session();
-app.use(session.initMiddleware());
+app.use(Session.initMiddleware());
 
 app.use(errorMiddleware);
 app.use(authMiddleware);

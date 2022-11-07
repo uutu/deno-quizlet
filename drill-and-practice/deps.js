@@ -3,10 +3,10 @@ export {
   Application,
   Router,
   send,
-} from "https://deno.land/x/oak@v10.6.0/mod.ts";
-export { Pool } from "https://deno.land/x/postgres@v0.16.1/mod.ts";
-export { Session } from "https://deno.land/x/oak_sessions@v3.5.1/mod.ts";
-export * as bcrypt from "https://deno.land/x/bcrypt@v0.4.0/mod.ts";
+} from "https://deno.land/x/oak@v11.1.0/mod.ts";
+export { Pool } from "https://deno.land/x/postgres@v0.17.0/mod.ts";
+export { Session } from "https://deno.land/x/oak_sessions@v4.0.5/mod.ts";
+export * as bcrypt from "https://deno.land/x/bcrypt@v0.4.1/mod.ts";
 export * as validasaur from "https://deno.land/x/validasaur@v0.15.0/mod.ts";
 export { superoak } from "https://deno.land/x/superoak@4.7.0/mod.ts";
 export { oakCors } from "https://deno.land/x/cors@v1.2.2/mod.ts";
