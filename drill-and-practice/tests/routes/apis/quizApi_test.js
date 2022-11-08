@@ -33,7 +33,7 @@ Deno.test({
         await request.post("/api/questions/answer")
         .set("Content-Type", "application/json")
         .send('{"questionId":"30", "optionId":"36"}')
-        .expect( {"correct": true } || null) // true in current state, null if qId, oId does not exist
+        .expect(null) // {"correct": true } in current db state after testing, but null if qId, oId does not yet exist
     },
     sanitizeResources: false,
     sanitizeOps: false,
