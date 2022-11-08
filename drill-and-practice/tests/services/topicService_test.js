@@ -20,9 +20,9 @@ Deno.test({
 });
 
 Deno.test({
-    name: "retrieveTopicById returns an object with the expected structure for topic with id parameter (id: 6 in current DB)",
+    name: "retrieveTopicById returns an object with the expected structure for topic with id parameter (id: 1 in current DB)",
     async fn() {
-        const result = await topicService.retrieveTopicById(6);
+        const result = await topicService.retrieveTopicById(1);
 
         // Comparison object for expected values within the query result
         const expectedStructure = {
@@ -41,8 +41,8 @@ Deno.test({
     name: "addNewTopic inserts a new topic in the DB that matches the given name parameter",
     async fn() {
 
-        //user_id: 2 a regular user, running the test multiple times violates unique key constraint and raises an error
-        await topicService.addNewTopic(2, "Test_Topic"); 
+        //user_id: 1 admin user, running the test multiple times violates topic name unique key constraint and raises an error
+        await topicService.addNewTopic(1, "Test_Topic"); 
 
         const result = await topicService.listAvailableTopics();
 
