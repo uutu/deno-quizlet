@@ -23,3 +23,29 @@ Deno.test({
     sanitizeResources: false,
     sanitizeOps: false,
 });
+
+Deno.test({
+    name: "GET request to route /auth/register displays the registering HTML page",
+    async fn() {
+        const request = await superoak(app);
+        await request.get("/auth/register")
+            .expect("Content-Type", "text/html; charset=utf-8")
+            .expect(200)
+    },
+    sanitizeResources: false,
+    sanitizeOps: false,
+});
+
+Deno.test({
+    name: "POST request to route /auth/login with admin login redirects and returns /topics",
+    async fn() {
+        const request = await superoak(app);
+        await request.post("/auth/login")
+            .set("Content-Type", "application/x-www-form-urlencoded")
+            .send("email=admin%40admin.com&password=123456")
+            .expect("Redirecting to /topics.")
+            .expect(302);
+    },
+    sanitizeResources: false,
+    sanitizeOps: false,
+});
